@@ -67,10 +67,7 @@ for col in numeric_features:
     # choose nicer defaults for some fields
     if col == "mileage":
         default_val = 50000.0
-    elif col == "distance":
-        default_val = 10.0
-    elif col in ("service_count_so_far", "prev_interval"):
-        default_val = 2.0
+   
     else:
         default_val = 0.0
 
@@ -85,10 +82,7 @@ input_data = pd.DataFrame(columns=feature_columns)
 input_data.loc[0] = 0  # initialize all zeros
 
 # date-derived
-if "service_year" in feature_columns:
-    input_data.loc[0, "service_year"] = service_year
-if "service_month" in feature_columns:
-    input_data.loc[0, "service_month"] = service_month
+
 
 # categorical (encode using label_encoders)
 for col, raw_val in cat_inputs.items():
